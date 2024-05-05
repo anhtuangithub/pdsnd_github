@@ -1,17 +1,22 @@
->**Note**: Please **fork** the current Udacity repository so that you will have a **remote** repository in **your** Github account. Clone the remote repository to your local machine. Later, as a part of the project "Post your Work on Github", you will push your proposed changes to the remote repository in your Github account.
-
 ### Date created
-Include the date you created this project and README file.
+2024/05/05
 
-### Project Title
-Replace the Project Title
+### Bikeshare
 
-### Description
-Describe what your project is about and what it does
+#### Description
+Udacity Python nanodegree project of Bikeshare data analysis of three cities was carried out by using Python language.
+
+The Pandas Dataframe and Time module (calculating time for analysis) were used to implement analysis of the bikeshare data.
+
+#### Packages and Libraries
+* Pandas - Data analysis and manipulation tool
+* NumPy - Scientific computing in Python
+* pytz - Accurate and cross platform timezone calculations
+* dateutil - Parsing and manipulating dates and times
 
 ### Files used
 Include the files used
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
+#### I completed this project with the knowledge I gained from python classes of Udacity, from stackoverflow site and Python Documentation
 
