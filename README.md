@@ -4,9 +4,12 @@
 ### Bikeshare
 
 #### Description
-Udacity Python nanodegree project of Bikeshare data analysis of three cities was carried out by using Python language.
+* Udacity Python nanodegree project of Bikeshare data analysis of three cities was carried out by using Python language.
 
-The Pandas Dataframe and Time module (calculating time for analysis) were used to implement analysis of the bikeshare data.
+* The Pandas Dataframe and Time module (calculating time for analysis) were used to implement analysis of the bikeshare data.
+
+#### Language
+* Python 3
 
 #### Packages and Libraries
 * Pandas - Data analysis and manipulation tool
