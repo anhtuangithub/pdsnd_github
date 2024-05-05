@@ -172,12 +172,37 @@ def user_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
+def display_raw_data(start_index, df):
+    """
+    Display 5 lines of raw data starting from the specified index.
+
+    Args:
+        start_index (int): The starting index of the raw data to display.
+    """
+    df.iloc[start_index:start_index+5]
+    print(df.iloc[start_index:start_index+5])
+    time_stats(df)
+    station_stats(df)
+    trip_duration_stats(df)
+    user_stats(df)
 
 def main():
     while True:
         city, month, day = get_filters()
         df = load_data(city, month, day)
 
+        index = 0
+        while True:
+            show_raw = input("Would you like to view 5 rows of individual trip data? Enter yes or no?: ").strip().lower()
+            if show_raw == 'yes':
+                print('*'*50)
+                display_raw_data(index, df)
+                index += 5
+            elif show_raw == 'no':
+                print('*'*50)
+                break
+            else:
+                print("Invalid input. Please enter 'yes' or 'no'.")
         time_stats(df)
         station_stats(df)
         trip_duration_stats(df)
