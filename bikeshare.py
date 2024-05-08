@@ -85,16 +85,16 @@ def time_stats(df):
 
     # TO DO: display the most common month
     most_month = df['Month'].mode()[0]
-    print("The most popular month for travel is: {}".format(most_month))
+    print("\nThe most popular month for travel is: {}".format(most_month))
 
     # TO DO: display the most common day of week
     most_day_of_week = df['Day_of_Week'].mode()[0]
-    print("The most popular day for travel is: {}".format(most_day_of_week))
+    print("\nThe most popular day for travel is: {}".format(most_day_of_week))
 
     # TO DO: display the most common start hour
     df['Hour'] = df['Start Time'].dt.hour
     most_hour = df['Hour'].mode()[0]
-    print("The most popular start hour for travel is: {}".format(most_hour))
+    print("\nThe most popular start hour for travel is: {}".format(most_hour))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -108,14 +108,14 @@ def station_stats(df):
 
     # TO DO: display most commonly used start station
     most_start_station = df['Start Station'].mode()[0]
-    print("The most commonly used start station: {}".format(most_start_station))
+    print("\nThe most commonly used start station: {}".format(most_start_station))
     # TO DO: display most commonly used end station
     most_end_station= df['End Station'].mode()[0]
-    print("The most commonly used end station: {}".format(most_end_station))
+    print("\nThe most commonly used end station: {}".format(most_end_station))
 
     # TO DO: display most frequent combination of start station and end station trip
     most_frequent = df.groupby(['Start Station', 'End Station']).size().idxmax()
-    print("The most frequent combination of start station and end station: {} ".format(most_frequent))
+    print("\nThe most frequent combination of start station and end station: {} ".format(most_frequent))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -129,11 +129,11 @@ def trip_duration_stats(df):
 
     # TO DO: display total travel time
     total_travel_time = df['Trip Duration'].sum()
-    print("The total travel time: {}".format(total_travel_time))
+    print("\nThe total travel time: {}".format(total_travel_time))
 
     # TO DO: display mean travel time
     mean_travel_time = df['Trip Duration'].mean()
-    print("The mean travel time: {}".format(mean_travel_time))
+    print("\nThe mean travel time: {}".format(mean_travel_time))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -172,12 +172,37 @@ def user_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
+def display_raw_data(start_index, df):
+    """
+    Display 5 lines of raw data starting from the specified index.
+
+    Args:
+        start_index (int): The starting index of the raw data to display.
+    """
+    df.iloc[start_index:start_index+5]
+    print(df.iloc[start_index:start_index+5])
+    time_stats(df)
+    station_stats(df)
+    trip_duration_stats(df)
+    user_stats(df)
 
 def main():
     while True:
         city, month, day = get_filters()
         df = load_data(city, month, day)
 
+        index = 0
+        while True:
+            show_raw = input("Would you like to view 5 rows of individual trip data? Enter yes or no?: ").strip().lower()
+            if show_raw == 'yes':
+                print('*'*50)
+                display_raw_data(index, df)
+                index += 5
+            elif show_raw == 'no':
+                print('*'*50)
+                break
+            else:
+                print("Invalid input. Please enter 'yes' or 'no'.")
         time_stats(df)
         station_stats(df)
         trip_duration_stats(df)
